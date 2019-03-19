@@ -1,0 +1,46 @@
+From 17333a47008d370186b4b1b31931cc31d102e4b9 Mon Sep 17 00:00:00 2001
+From: MSe1969 <mse1969@posteo.de>
+Date: Sun, 25 Mar 2018 23:14:24 +0200
+Subject: SetupWizard: Enable PrivacyGuard by default, disable Metrics by default
+
+Currently, SetupWizard suggests to send Metrics by default and not to
+enable PrivacyGuard - the opposite for both is a significantly better
+default with regards to data privacy.
+
+Change-Id: If3f5b718e2592cbc55089cb8eb67e773e331cc53
+---
+ src/org/lineageos/setupwizard/LineageSettingsActivity.java | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/src/org/lineageos/setupwizard/LineageSettingsActivity.java b/src/org/lineageos/setupwizard/LineageSettingsActivity.java
+index 985037d..24d066b 100644
+--- a/src/org/lineageos/setupwizard/LineageSettingsActivity.java
++++ b/src/org/lineageos/setupwizard/LineageSettingsActivity.java
+@@ -181,9 +181,8 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
+ 
+     private void updateMetricsOption() {
+         final Bundle myPageBundle = mSetupWizardApp.getSettingsBundle();
+-        boolean metricsChecked =
+-                !myPageBundle.containsKey(KEY_SEND_METRICS) || myPageBundle
+-                        .getBoolean(KEY_SEND_METRICS);
++        boolean metricsChecked = myPageBundle.containsKey(KEY_SEND_METRICS) ?
++                myPageBundle.getBoolean(KEY_SEND_METRICS) : false;
+         mMetrics.setChecked(metricsChecked);
+         myPageBundle.putBoolean(KEY_SEND_METRICS, metricsChecked);
+     }
+@@ -203,11 +202,8 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
+ 
+     private void updatePrivacyGuardOption() {
+         final Bundle bundle = mSetupWizardApp.getSettingsBundle();
+-        boolean enabled = LineageSettings.Secure.getInt(getContentResolver(),
+-                LineageSettings.Secure.PRIVACY_GUARD_DEFAULT, 0) != 0;
+         boolean checked = bundle.containsKey(KEY_PRIVACY_GUARD) ?
+-                bundle.getBoolean(KEY_PRIVACY_GUARD) :
+-                enabled;
++                bundle.getBoolean(KEY_PRIVACY_GUARD) : true;
+         mPrivacyGuard.setChecked(checked);
+         bundle.putBoolean(KEY_PRIVACY_GUARD, checked);
+     }
+-- 
+2.11.0
+
