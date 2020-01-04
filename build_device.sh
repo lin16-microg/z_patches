@@ -1,9 +1,9 @@
 #!/bin/bash
 
 print_help() {
-  echo "usage: build_oneplus3 <device> test|sign"
-  echo "----------------------------------------"
-  echo " <device> Device name (oneplus3)"
+  echo "usage: build_device <device> [test|sign]"
+  echo "---------------------------------------"
+  echo " <device> Device name (oneplus3, amami)"
   echo "test - build with testkeys (insecure, but compatible)"
   echo "sign - create a signed build"
 }
@@ -16,6 +16,9 @@ print_device() {
 # Check parameters
 case "$1" in
   oneplus3)
+     print_device $1
+    ;;
+  amami)
      print_device $1
     ;;
   *) print_help
