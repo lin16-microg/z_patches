@@ -15,10 +15,7 @@ print_device() {
 
 # Check parameters
 case "$1" in
-  oneplus3)
-     print_device $1
-    ;;
-  amami)
+  amami|gts210ltexx|oneplus3|osprey)
      print_device $1
     ;;
   *) print_help
