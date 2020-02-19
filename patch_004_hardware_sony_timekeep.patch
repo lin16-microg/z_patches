@@ -1,0 +1,31 @@
+From 6374c8f2f65422412bce73ac25cb1dd666baf560 Mon Sep 17 00:00:00 2001
+From: MarijnS95 <marijns95@gmail.com>
+Date: Wed, 12 Feb 2020 12:20:06 +0100
+Subject: [PATCH 1/2] timekeep: Do not use legacy cutils/log.h
+
+Fixes the following warning.
+
+In file included from vendor/oss/timekeep/timekeep.c:44:
+system/core/libcutils/include_vndk/cutils/log.h:38:2: warning: "Deprecated: don't include cutils/log.h, use either android/log.h or log/log.h" [-W#warnings]
+
+Signed-off-by: MarijnS95 <marijns95@gmail.com>
+---
+ timekeep.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/timekeep.c b/timekeep.c
+index a4fe406..ecf703d 100644
+--- a/timekeep.c
++++ b/timekeep.c
+@@ -40,7 +40,7 @@
+ #define LOG_TAG "TimeKeep"
+ 
+ #include <cutils/properties.h>
+-#include <cutils/log.h>
++#include <log/log.h>
+ #include <errno.h>
+ 
+ #define RTC_SYS_FILE "/sys/class/rtc/rtc0/since_epoch"
+-- 
+2.17.1
+
