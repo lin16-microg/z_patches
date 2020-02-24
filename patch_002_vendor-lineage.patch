@@ -1,4 +1,4 @@
-From 10e26b4c9aa174a54b4695591504916d3d9c0651 Mon Sep 17 00:00:00 2001
+From cd2f7085644c26c7c3b9334d12c72c81f3f01404 Mon Sep 17 00:00:00 2001
 From: MSe1969 <mse1969@posteo.de>
 Date: Fri, 15 Mar 2019 12:01:23 +0100
 Subject: [PATCH] Different sign method in build script
@@ -17,11 +17,11 @@ symlink is created accordingly
 
 Change-Id: I4b8b26ef3f6d54f7d4ee1c570c1737779b6b8884
 ---
- config/common.mk | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ config/common.mk | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/config/common.mk b/config/common.mk
-index 99c5245c..13e368e4 100644
+index 837e11ef..f6c10f3c 100644
 --- a/config/common.mk
 +++ b/config/common.mk
 @@ -1,6 +1,14 @@
@@ -39,6 +39,18 @@ index 99c5245c..13e368e4 100644
  PRODUCT_BRAND ?= LineageOS
  
  PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+@@ -275,11 +283,6 @@ ifndef LINEAGE_BUILDTYPE
+     endif
+ endif
+ 
+-# Filter out random types, so it'll reset to UNOFFICIAL
+-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
+-    LINEAGE_BUILDTYPE :=
+-endif
+-
+ ifdef LINEAGE_BUILDTYPE
+     ifneq ($(LINEAGE_BUILDTYPE), SNAPSHOT)
+         ifdef LINEAGE_EXTRAVERSION
 -- 
 2.11.0
 
