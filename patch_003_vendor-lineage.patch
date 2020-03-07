@@ -22,7 +22,7 @@ index 3c557aa4..68dde31e 100644
  
 +# Updater URI and changelog
 +PRODUCT_PROPERTY_OVERRIDES += \
-+    lineage.updater.uri=https://raw.githubusercontent.com/lin16-microG/OTA/lin-16.0-microG/$(LINEAGE_BUILD).json
++    lineage.updater.uri=https://raw.githubusercontent.com/lin16-microG/OTA/lineage-16.0/$(LINEAGE_BUILD).json
 +DEVICE_PACKAGE_OVERLAYS += \
 +    vendor/lineage/overlay/changelog/$(LINEAGE_BUILD)
 +
