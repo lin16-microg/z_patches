@@ -1,6 +1,6 @@
-From ba1322d8473d4ddb437e6d2907a56add4c93ba43 Mon Sep 17 00:00:00 2001
-From: MSe1969 <mse1969@posteo.de>
-Date: Tue, 31 Dec 2019 12:21:20 +0100
+From d7fbc55b6c02397b5ad1ab905b418006338acebf Mon Sep 17 00:00:00 2001
+From: mse1969 <mse1969@posteo.de>
+Date: Sat, 7 Mar 2020 14:55:40 +0100
 Subject: [PATCH] 'Pseudonymize' build metadata
 
 Don't write the real Linux build host name and user, but use the env. vars
@@ -9,12 +9,26 @@ kernel build metadata, if set: A little less info usable for fingerprinting.
 
 Change-Id: Ia1d9c53ca87c9f208b57f9998ba92aa1d2052cd3
 ---
+ core/Makefile            | 2 +-
  core/version_defaults.mk | 2 +-
  tools/buildinfo.sh       | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/core/Makefile b/core/Makefile
+index 404bb54..6e2f4fa 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -236,7 +236,7 @@ $(intermediate_system_build_prop): PRIVATE_BUILD_DESC := $(build_desc)
+ # The string used to uniquely identify the combined build and product; used by the OTA server.
+ ifeq (,$(strip $(BUILD_FINGERPRINT)))
+   ifeq ($(strip $(HAS_BUILD_NUMBER)),false)
+-    BF_BUILD_NUMBER := $(USER)$$($(DATE_FROM_FILE) +%m%d%H%M)
++    BF_BUILD_NUMBER := $(KBUILD_BUILD_USER)$$($(DATE_FROM_FILE) +%m%d%H%M)
+   else
+     BF_BUILD_NUMBER := $(file <$(BUILD_NUMBER_FILE))
+   endif
 diff --git a/core/version_defaults.mk b/core/version_defaults.mk
-index abf3b64d4..f76a8c8d2 100644
+index 8c3cb60..6ed6acb 100644
 --- a/core/version_defaults.mk
 +++ b/core/version_defaults.mk
 @@ -289,7 +289,7 @@ ifndef BUILD_NUMBER
@@ -27,7 +41,7 @@ index abf3b64d4..f76a8c8d2 100644
  endif
  
 diff --git a/tools/buildinfo.sh b/tools/buildinfo.sh
-index 9a03fadc8..0886036e6 100755
+index 9a03fad..0886036 100755
 --- a/tools/buildinfo.sh
 +++ b/tools/buildinfo.sh
 @@ -17,8 +17,8 @@ echo "ro.build.version.min_supported_target_sdk=$PLATFORM_MIN_SUPPORTED_TARGET_S
@@ -42,5 +56,5 @@ index 9a03fadc8..0886036e6 100755
  echo "ro.build.flavor=$TARGET_BUILD_FLAVOR"
  if [ -n "$BOARD_BUILD_SYSTEM_ROOT_IMAGE" ] ; then
 -- 
-2.11.0
+2.7.4
 
