@@ -18,7 +18,6 @@ cd ..
 TOPDIR=$PWD
 
 
-clear_set build/make
 clear_set packages/apps/SetupWizard
 
 cd $THISDIR
