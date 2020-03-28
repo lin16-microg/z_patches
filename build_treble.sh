@@ -1,35 +1,27 @@
 #!/bin/bash
 
-print_help() {
-  echo "usage: build_device <device> [test|sign]"
-  echo "---------------------------------------"
-  echo " <device> Device name (oneplus3, amami)"
-  echo "test - build with testkeys (insecure, but compatible)"
-  echo "sign - create a signed build"
+##
+## Final file processing
+##
+create_files() {
+  TARGET_FILE=treble_arm64_a_lineage16_$(date +%Y%m%d)_system.img
+  ln -f $OUT/system.img $OUT/$TARGET_FILE
+#  zip $OUT/$TARGET_FILE.zip $OUT/$TARGET_FILE
 }
-
-print_device() {
-  echo "Building $1 ..."
-}
-
 
 # Check parameters
 case "$1" in
-  amami|gts210ltexx|oneplus3|osprey)
-     print_device $1
-    ;;
-  *) print_help
-     exit
-    ;;
-esac
-case "$2" in
   test) TESTKEY=true
     ;;
   sign) TESTKEY=false
     ;;
-  *) print_help
+  *) echo "usage: build_treble test|sign [root]"
+     echo "-----------------------------------------------------"
+     echo "test - build with testkeys (insecure, but compatible)"
+     echo "sign - create a signed build"
+     echo "root - if passed, include root"
      exit
-    ;;
+    ;;   
 esac
 
 # Initiate environment
@@ -43,19 +35,15 @@ export USE_CCACHE=1
 #export CCACHE_DIR=~/android/.ccache
 prebuilts/misc/linux-x86/ccache/ccache -M 48G
 
-# un-comment below line, if you want to build with root baked in
-# export WITH_SU=true
-
 # Normalize build metadata
 export KBUILD_BUILD_USER=android
 export KBUILD_BUILD_HOST=localhost
 
-#start build
 if [ "$TESTKEY" = false ] ; then
   export OWN_KEYS_DIR=~/.android-certs
   export RELEASE_TYPE=UNOFFICIAL-microG-signed
 
-  # We need symlinks to fake the existence of a testkey
+  # We need symlinks to fake the existence of a testkey 
   # for the selinux build process
   if [ ! -e $OWN_KEYS_DIR/testkey.pk8 ] ; then
     ln -s $OWN_KEYS_DIR/releasekey.pk8 $OWN_KEYS_DIR/testkey.pk8
@@ -65,6 +53,15 @@ if [ "$TESTKEY" = false ] ; then
     ln -s $OWN_KEYS_DIR/releasekey.x509.pem $OWN_KEYS_DIR/testkey.x509.pem
     echo "Symlink testkey.x509.pem created"
   fi
+else
+  export RELEASE_TYPE=UNOFFICIAL-microG
 fi
-brunch $1
+
+if [ "$2" == "root" ]; then
+  echo "Including ROOT..."
+  export WITH_SU=true
+fi
+
+lunch treble_arm64_avN-userdebug
+make WITHOUT_CHECK_API=true systemimage && create_files
 
