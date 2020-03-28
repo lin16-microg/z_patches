@@ -6,7 +6,10 @@
 create_files() {
   TARGET_FILE=treble_arm64_a_lineage16_$(date +%Y%m%d)_system.img
   ln -f $OUT/system.img $OUT/$TARGET_FILE
-#  zip $OUT/$TARGET_FILE.zip $OUT/$TARGET_FILE
+  if [ "$MAKE_ZIP" = true ] ; then
+    echo "Making ZIP file..."
+    zip $OUT/$TARGET_FILE.zip $OUT/$TARGET_FILE
+  fi
 }
 
 # Check parameters
@@ -15,11 +18,12 @@ case "$1" in
     ;;
   sign) TESTKEY=false
     ;;
-  *) echo "usage: build_treble test|sign [root]"
+  *) echo "usage: build_treble test|sign [root] [zip]"
      echo "-----------------------------------------------------"
      echo "test - build with testkeys (insecure, but compatible)"
      echo "sign - create a signed build"
      echo "root - if passed, include root"
+     echo "zip  - if passed, create also a compressed ZIP file"
      exit
     ;;   
 esac
@@ -60,6 +64,16 @@ fi
 if [ "$2" == "root" ]; then
   echo "Including ROOT..."
   export WITH_SU=true
+fi
+
+if [ "$3" == "zip" ]; then
+  MAKE_ZIP=true
+else
+  if [ "$2" == "zip" ]; then
+    MAKE_ZIP=true
+  else
+    MAKE_ZIP=false
+  fi
 fi
 
 lunch treble_arm64_avN-userdebug
