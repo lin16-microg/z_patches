@@ -65,6 +65,8 @@ if [ "$TESTKEY" = false ] ; then
     ln -s $OWN_KEYS_DIR/releasekey.x509.pem $OWN_KEYS_DIR/testkey.x509.pem
     echo "Symlink testkey.x509.pem created"
   fi
+else
+  export RELEASE_TYPE=UNOFFICIAL-microG
 fi
 brunch $1
 
