@@ -15,7 +15,7 @@ print_device() {
 
 # Check parameters
 case "$1" in
-  amami|gts210ltexx|gts210vewifi|oneplus3|osprey)
+  amami|gts210ltexx|gts210vewifi|oneplus3|osprey|x86)
      print_device $1
     ;;
   *) print_help
@@ -68,5 +68,10 @@ if [ "$TESTKEY" = false ] ; then
 else
   export RELEASE_TYPE=UNOFFICIAL-microG
 fi
-brunch $1
 
+if [ "$1" = "x86" ] ; then
+  lunch lineage_x86-eng
+  mka
+else
+  brunch $1
+fi
