@@ -70,7 +70,7 @@ else
 fi
 
 if [ "$1" = "x86" ] ; then
-  lunch lineage_x86-eng
+  lunch lineage_x86-userdebug
   mka
 else
   brunch $1
