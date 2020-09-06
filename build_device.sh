@@ -1,11 +1,12 @@
 #!/bin/bash
 
 print_help() {
-  echo "usage: build_device <device> [test|sign]"
+  echo "usage: build_device <device> test|sign [root]"
   echo "----------------------------------------------------------------------"
   echo " <device> Device name (amami|gts210ltexx|gts210vewifi|oneplus3|osprey)"
   echo "test - build with testkeys (insecure, but compatible)"
   echo "sign - create a signed build"
+  echo "root - optional, if passed, build with root baked in"
 }
 
 print_device() {
@@ -35,6 +36,12 @@ esac
 # Initiate environment
 source build/envsetup.sh
 
+# Build with root ?
+if [ "$3" == "root" ]; then
+  echo "Including ROOT..."
+  export WITH_SU=true
+fi
+
 # CCache
 # ------
 # uncomment the below line to set own cache 
@@ -42,9 +49,6 @@ source build/envsetup.sh
 export USE_CCACHE=1
 #export CCACHE_DIR=~/android/.ccache
 prebuilts/misc/linux-x86/ccache/ccache -M 48G
-
-# un-comment below line, if you want to build with root baked in
-# export WITH_SU=true
 
 # Normalize build metadata
 export KBUILD_BUILD_USER=android
