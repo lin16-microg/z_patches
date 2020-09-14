@@ -17,7 +17,7 @@ THISDIR=$PWD
 cd ..
 TOPDIR=$PWD
 
-
+clear_set packages/apps/Camera2
 clear_set packages/apps/SetupWizard
 
 cd $THISDIR
