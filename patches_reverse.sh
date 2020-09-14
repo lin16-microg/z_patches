@@ -21,6 +21,7 @@ TOPDIR=$PWD
 clear_set bionic
 clear_set device/lineage/sepolicy
 clear_set external/tinycompress
+clear_set packages/apps/Camera2
 clear_set packages/apps/SetupWizard
 
 
