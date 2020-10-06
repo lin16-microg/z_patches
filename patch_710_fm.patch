@@ -1,0 +1,40 @@
+From 156ad929f5ffe85aaa9b8e45480c1d6ff2ea09bd Mon Sep 17 00:00:00 2001
+From: Daniel Micay <danielmicay@gmail.com>
+Date: Sun, 17 Mar 2019 20:00:00 -0400
+Subject: [PATCH] constify JNINativeMethod table(s)
+
+Change-Id: I87b434fc306f40eac28bd43418f250ccd003268f
+---
+ jni/android_hardware_fm.cpp | 2 +-
+ libfm_jni/LibfmJni.cpp      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/jni/android_hardware_fm.cpp b/jni/android_hardware_fm.cpp
+index 831ad42..da98d51 100644
+--- a/jni/android_hardware_fm.cpp
++++ b/jni/android_hardware_fm.cpp
+@@ -1746,7 +1746,7 @@ static void cleanupNative(JNIEnv *env __unused, jobject object __unused) {
+ /*
+  * JNI registration.
+  */
+-static JNINativeMethod gMethods[] = {
++static const JNINativeMethod gMethods[] = {
+         /* name, signature, funcPtr */
+         { "classInitNative", "()V", (void*)classInitNative},
+         { "initNative", "()V", (void*)initNative},
+diff --git a/libfm_jni/LibfmJni.cpp b/libfm_jni/LibfmJni.cpp
+index 19baf66..16bf939 100644
+--- a/libfm_jni/LibfmJni.cpp
++++ b/libfm_jni/LibfmJni.cpp
+@@ -343,7 +343,7 @@ out:
+ 
+ static const char *classPathNameFM = "com/android/fmradio/FmNative";
+ 
+-static JNINativeMethod gMethods[] = {
++static const JNINativeMethod gMethods[] = {
+     {"openDev",       "()Z",   (void*)OpenFd },
+     {"closeDev",      "()Z",   (void*)CloseFd },
+     {"powerUp",       "(F)Z",  (void*)TurnOn },
+-- 
+2.11.0
+

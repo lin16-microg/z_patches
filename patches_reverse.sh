@@ -20,6 +20,21 @@ TOPDIR=$PWD
 clear_set packages/apps/Camera2
 clear_set packages/apps/SetupWizard
 
+#Constify JNI method tables, revert
+clear_set art
+clear_set external/ant-wireless/ant_native
+clear_set external/conscrypt
+clear_set external/neven
+clear_set frameworks/rs
+clear_set frameworks/ex
+clear_set hardware/qcom/fm
+clear_set libcore
+clear_set packages/apps/FMRadio
+clear_set packages/apps/Bluetooth
+clear_set packages/apps/Nfc
+clear_set packages/apps/Terminal
+clear_set vendor/nxp/opensource/commonsys/packages/apps/Nfc
+
 cd $THISDIR
 
 
