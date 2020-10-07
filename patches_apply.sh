@@ -35,6 +35,12 @@ patch -p1 < $THISDIR/patch_003_Camera2.patch
 echo "-"
 cd $TOPDIR
 
+cd external/openssh
+echo "Patching $PWD (use bionic's explicit bzero impl.)"
+patch -p1 < $THISDIR/patch_004_openssh.patch
+echo "-"
+cd $TOPDIR
+
 
 list_repos | while read STR; do
   DIR=$(echo $STR | cut -f1 -d:)
