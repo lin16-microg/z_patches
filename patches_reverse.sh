@@ -19,9 +19,11 @@ TOPDIR=$PWD
 
 
 clear_set device/lineage/sepolicy
+clear_set external/openssh
 clear_set external/tinycompress
 clear_set packages/apps/Camera2
 clear_set packages/apps/SetupWizard
+
 
 #Constify JNI method tables, revert
 clear_set art

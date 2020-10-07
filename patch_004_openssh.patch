@@ -1,0 +1,28 @@
+From 3d28512518beb469655d0c6aeca5a6557f6250cd Mon Sep 17 00:00:00 2001
+From: MSe1969 <mse1969@posteo.de>
+Date: Wed, 7 Oct 2020 19:16:38 +0200
+Subject: [PATCH] OpenSSH: Set #define HAVE_EXPLICIT_BZERO
+
+Needed to use the explicit bzero implementation in hardened bionic
+
+Change-Id: I4d17406f8374cf74d5506857e3d78aa31daf8283
+---
+ openbsd-compat/openbsd-compat.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/openbsd-compat/openbsd-compat.h b/openbsd-compat/openbsd-compat.h
+index 865aaee5..4b900a70 100644
+--- a/openbsd-compat/openbsd-compat.h
++++ b/openbsd-compat/openbsd-compat.h
+@@ -27,6 +27,8 @@
+ #ifndef _OPENBSD_COMPAT_H
+ #define _OPENBSD_COMPAT_H
+ 
++#define HAVE_EXPLICIT_BZERO
++
+ #include "includes.h"
+ 
+ #include <sys/types.h>
+-- 
+2.11.0
+

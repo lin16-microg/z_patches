@@ -30,6 +30,12 @@ rm common/private/genfs_contexts
 echo "-"
 cd $TOPDIR
 
+cd external/openssh
+echo "Patching $PWD (use bionic's explicit bzero impl.)"
+patch -p1 < $THISDIR/patch_004_openssh.patch
+echo "-"
+cd $TOPDIR
+
 cd external/tinycompress
 echo "Patching $PWD (Kernel Headers)"
 patch -p1 < $THISDIR/patch_101_tinycompress.patch
