@@ -3,7 +3,7 @@
 print_help() {
   echo "usage: build_device <device> test|sign [root]"
   echo "----------------------------------------------------------------------"
-  echo " <device> Device name (gts210ltexx|gts210vewifi|oneplus3|osprey)"
+  echo " <device> Device name (oneplus3)"
   echo "test - build with testkeys (insecure, but compatible)"
   echo "sign - create a signed build"
   echo "root - optional, if passed, build with root baked in"
@@ -16,7 +16,7 @@ print_device() {
 
 # Check parameters
 case "$1" in
-  gts210ltexx|gts210vewifi|oneplus3|osprey|x86)
+  oneplus3)
      print_device $1
     ;;
   *) print_help
