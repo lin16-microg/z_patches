@@ -24,15 +24,15 @@ cd ..
 TOPDIR=$PWD
 
 
-cd device/lineage/sepolicy
-echo "Patching $PWD (genfs_contexts)"
-rm common/private/genfs_contexts
+cd bionic
+echo "Patching $PWD (Bionic treble)"
+patch -p1 < $THISDIR/patch_100_bionic.patch
 echo "-"
 cd $TOPDIR
 
-cd external/openssh
-echo "Patching $PWD (use bionic's explicit bzero impl.)"
-patch -p1 < $THISDIR/patch_004_openssh.patch
+cd device/lineage/sepolicy
+echo "Patching $PWD (genfs_contexts)"
+rm common/private/genfs_contexts
 echo "-"
 cd $TOPDIR
 
