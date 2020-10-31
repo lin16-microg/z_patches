@@ -1,0 +1,33 @@
+From be992482232b9f7461f5731a71b2167b062bd518 Mon Sep 17 00:00:00 2001
+From: MSe1969 <mse1969@posteo.de>
+Date: Wed, 14 Oct 2020 20:52:19 +0200
+Subject: [PATCH] Email: Declare GET_WIDGET_UPDATE permission
+
+A new permission for E-mail widget updates was introduced as ASB patch,
+but it has been missed to actually declare its usage in the manifest.
+
+When an attempt was made to add it to the home screen, it was not
+possible to get the e-mails of the selected folder displayed.
+
+Test: Add E-Mail widget to home screen and try to configure it.
+Change-Id: I27a4ed0136264fc6db618460994354f403fdf99c
+---
+ AndroidManifest.xml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index b5e865f68..2ee91ddb9 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -74,6 +74,8 @@
+         android:protectionLevel="signature"
+         android:label="@string/permission_update_widget_label"
+         android:description="@string/permission_update_widget_desc"/>
++    <uses-permission
++        android:name="com.android.email.permission.GET_WIDGET_UPDATE"/>
+ 
+     <!-- Grant permission to system apps to access provider (see provider below) -->
+     <permission
+-- 
+2.11.0
+

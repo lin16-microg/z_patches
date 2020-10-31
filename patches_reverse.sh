@@ -18,6 +18,7 @@ cd ..
 TOPDIR=$PWD
 
 clear_set packages/apps/Camera2
+clear_set packages/apps/Email
 clear_set packages/apps/SetupWizard
 
 #Constify JNI method tables, revert
