@@ -35,12 +35,6 @@ patch -p1 < $THISDIR/patch_003_Camera2.patch
 echo "-"
 cd $TOPDIR
 
-cd packages/apps/Email
-echo "Patching $PWD (AOSP E-Mail Widget)"
-patch -p1 < $THISDIR/patch_010_Email.patch
-echo "-"
-cd $TOPDIR
-
 
 list_repos | while read STR; do
   DIR=$(echo $STR | cut -f1 -d:)
@@ -52,4 +46,8 @@ list_repos | while read STR; do
 done
 
 cd $THISDIR
+
+
+
+
 
