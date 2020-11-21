@@ -19,7 +19,6 @@ TOPDIR=$PWD
 
 
 clear_set build/make
-clear_set packages/apps/Email
 clear_set vendor/lineage
 
 cd $THISDIR
