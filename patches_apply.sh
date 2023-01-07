@@ -9,7 +9,6 @@ frameworks/rs:patch_703_rs.patch
 frameworks/ex:patch_704_ex.patch
 packages/apps/FMRadio:patch_705_FMRadio.patch
 packages/apps/Bluetooth:patch_706_Bluetooth.patch
-packages/apps/Nfc:patch_707_Nfc.patch
 packages/apps/Terminal:patch_708_Terminal.patch
 art:patch_709_art.patch
 hardware/qcom/fm:patch_710_fm.patch
