@@ -31,7 +31,6 @@ clear_set hardware/qcom/fm
 clear_set libcore
 clear_set packages/apps/FMRadio
 clear_set packages/apps/Bluetooth
-clear_set packages/apps/Nfc
 clear_set packages/apps/Terminal
 clear_set vendor/nxp/opensource/commonsys/packages/apps/Nfc
 
