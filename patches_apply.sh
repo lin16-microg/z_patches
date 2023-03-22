@@ -35,6 +35,12 @@ rm common/private/genfs_contexts
 echo "-"
 cd $TOPDIR
 
+cd external/Mulch
+echo "Patching $PWD (Mulch - no product module)"
+patch -p1 < $THISDIR/patch_200_Mulch.patch
+echo "-"
+cd $TOPDIR
+
 cd external/tinycompress
 echo "Patching $PWD (Kernel Headers)"
 patch -p1 < $THISDIR/patch_101_tinycompress.patch

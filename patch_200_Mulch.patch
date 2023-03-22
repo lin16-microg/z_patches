@@ -1,0 +1,24 @@
+From ab609435575292ad8417d9dae2d8e8dd980b089b Mon Sep 17 00:00:00 2001
+From: MSe <mse1969@posteo.de>
+Date: Tue, 21 Mar 2023 22:02:52 +0100
+Subject: [PATCH] Mulch: Don't declare Product module
+
+---
+ Android.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Android.mk b/Android.mk
+index 231d32a..1924223 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -22,7 +22,6 @@ include $(CLEAR_VARS)
+ 
+ LOCAL_MODULE := webview
+ LOCAL_MODULE_CLASS := APPS
+-LOCAL_PRODUCT_MODULE := true
+ LOCAL_MULTILIB := both
+ LOCAL_REQUIRED_MODULES := \
+         libwebviewchromium_loader \
+-- 
+2.30.2
+

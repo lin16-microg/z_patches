@@ -28,6 +28,7 @@ clear_set packages/apps/SetupWizard
 clear_set art
 clear_set external/ant-wireless/ant_native
 clear_set external/conscrypt
+clear_set external/Mulch
 clear_set external/neven
 clear_set frameworks/rs
 clear_set frameworks/ex
