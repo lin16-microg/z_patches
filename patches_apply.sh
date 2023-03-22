@@ -22,6 +22,12 @@ THISDIR=$PWD
 cd ..
 TOPDIR=$PWD
 
+cd external/Mulch
+echo "Patching $PWD (Mulch - no product module)"
+patch -p1 < $THISDIR/patch_200_Mulch.patch
+echo "-"
+cd $TOPDIR
+
 cd packages/apps/SetupWizard
 echo "Patching $PWD (Setup Wizard)"
 patch -p1 < $THISDIR/patch_002_SetupWizard.patch
