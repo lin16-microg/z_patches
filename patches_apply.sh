@@ -29,6 +29,12 @@ patch -p1 < $THISDIR/patch_100_bionic.patch
 echo "-"
 cd $TOPDIR
 
+cd device/common
+echo "Patching $PWD (GPS harden)"
+patch -p1 < $THISDIR/patch_050_device-common.patch
+echo "-"
+cd $TOPDIR
+
 cd device/lineage/sepolicy
 echo "Patching $PWD (genfs_contexts)"
 rm common/private/genfs_contexts
