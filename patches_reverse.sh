@@ -21,6 +21,7 @@ clear_set device/common
 clear_set hardware/qcom/gps
 clear_set packages/apps/Camera2
 clear_set packages/apps/SetupWizard
+clear_set system/ca-certificates
 
 #Constify JNI method tables, revert
 clear_set art
