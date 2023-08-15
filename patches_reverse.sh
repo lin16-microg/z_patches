@@ -17,6 +17,8 @@ THISDIR=$PWD
 cd ..
 TOPDIR=$PWD
 
+clear_set device/common
+clear_set hardware/qcom/gps
 clear_set packages/apps/Camera2
 clear_set packages/apps/SetupWizard
 
@@ -36,9 +38,3 @@ clear_set packages/apps/Terminal
 clear_set vendor/nxp/opensource/commonsys/packages/apps/Nfc
 
 cd $THISDIR
-
-
-
-
-
-
