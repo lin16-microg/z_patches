@@ -67,7 +67,6 @@ cd $TOPDIR
 
 cd system/ca-certificates/files
 echo "Patching $PWD (Remove untrusted certificates)"
-rm -fv 7c302982.0 c2c1704e.0 d0cddf45.0; #TrustCor
 rm -fv cb156124.0; #E-Turga
 echo "-"
 cd $TOPDIR
