@@ -24,7 +24,6 @@ clear_set device/lineage/sepolicy
 clear_set external/tinycompress
 clear_set packages/apps/Camera2
 clear_set packages/apps/SetupWizard
-clear_set system/ca-certificates
 
 #Constify JNI method tables, revert
 clear_set art

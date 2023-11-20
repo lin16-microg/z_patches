@@ -65,12 +65,6 @@ patch -p1 < $THISDIR/patch_003_Camera2.patch
 echo "-"
 cd $TOPDIR
 
-cd system/ca-certificates/files
-echo "Patching $PWD (Remove untrusted certificates)"
-rm -fv cb156124.0; #E-Turga
-echo "-"
-cd $TOPDIR
-
 
 list_repos | while read STR; do
   DIR=$(echo $STR | cut -f1 -d:)
