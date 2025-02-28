@@ -1,0 +1,27 @@
+From 97ca9fc978404ac484f934389797526e756f9f5a Mon Sep 17 00:00:00 2001
+From: mse1969 <mse1969@posteo.de>
+Date: Fri, 28 Feb 2025 18:15:08 +0100
+Subject: [PATCH] Invalidate AOSmium
+
+Mulch and AOSmium webview use the same Module name, which leads to build
+errors. To use Mulch, the AOSmium module needs to get a different unused name.
+---
+ Android.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Android.mk b/Android.mk
+index 3716d79..b975f89 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -20,7 +20,7 @@ LOCAL_PATH := $(call my-dir)
+ 
+ include $(CLEAR_VARS)
+ 
+-LOCAL_MODULE := webview
++LOCAL_MODULE := AOSmium
+ LOCAL_MODULE_CLASS := APPS
+ LOCAL_PRODUCT_MODULE := true
+ LOCAL_MULTILIB := both
+-- 
+2.39.5
+

@@ -41,6 +41,12 @@ rm common/private/genfs_contexts
 echo "-"
 cd $TOPDIR
 
+cd external/AOSmium-prebuilt
+echo "Patching $PWD (Invalidate AOSmium)"
+patch -p1 < $THISDIR/patch_400_webview.patch
+echo "-"
+cd $TOPDIR
+
 cd external/tinycompress
 echo "Patching $PWD (Kernel Headers)"
 patch -p1 < $THISDIR/patch_101_tinycompress.patch
