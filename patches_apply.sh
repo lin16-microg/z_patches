@@ -28,6 +28,12 @@ patch -p1 < $THISDIR/patch_050_device-common.patch
 echo "-"
 cd $TOPDIR
 
+cd external/AOSmium-prebuilt
+echo "Patching $PWD (AOSmium: No product module)"
+patch -p1 < $THISDIR/patch_401_webview.patch
+echo "-"
+cd $TOPDIR
+
 cd external/Mulch
 echo "Patching $PWD (invalidate Mulch)"
 patch -p1 < $THISDIR/patch_400_webview.patch

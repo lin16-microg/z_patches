@@ -25,6 +25,7 @@ clear_set packages/apps/SetupWizard
 #Constify JNI method tables, revert
 clear_set art
 clear_set external/ant-wireless/ant_native
+clear_set external/AOSmium-prebuilt
 clear_set external/conscrypt
 clear_set external/Mulch
 clear_set external/neven

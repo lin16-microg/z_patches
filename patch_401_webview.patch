@@ -1,0 +1,24 @@
+From 4cce087c365a1c9d882dbad653f617352fb64659 Mon Sep 17 00:00:00 2001
+From: mse1969 <mse1969@posteo.de>
+Date: Fri, 28 Feb 2025 18:19:45 +0100
+Subject: [PATCH] AOSmium: Don't declare product module
+
+---
+ Android.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Android.mk b/Android.mk
+index 3716d79..9545b92 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -22,7 +22,6 @@ include $(CLEAR_VARS)
+ 
+ LOCAL_MODULE := webview
+ LOCAL_MODULE_CLASS := APPS
+-LOCAL_PRODUCT_MODULE := true
+ LOCAL_MULTILIB := both
+ LOCAL_REQUIRED_MODULES := \
+         libwebviewchromium_loader \
+-- 
+2.39.5
+
